@@ -44,7 +44,6 @@ exports.handler = async function(event,context,callback){
 		  try{
 		    let request = await axios(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${KEY_GEONAMES}`);
 		    let data1 = request.data
-		    console.log("2","TESTING ......")
 		    let lat = data1.geonames[0].lat;
 		    let long = data1.geonames[0].lng;
 		    apiData.lat = lat;
