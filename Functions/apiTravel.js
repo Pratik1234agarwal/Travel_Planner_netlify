@@ -42,8 +42,6 @@ exports.handler = async function(event,context,callback){
     	apiData.cityName = city;
 	    console.log("Request Received for city :: "+city);
 		  try{
-		  	console.log("3","TESTING ..... ");
-		  	console.log("4",fetch);
 		    let request = await axios(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${KEY_GEONAMES}`);
 		    let data1 = request.data
 		    console.log("2","TESTING ......")
@@ -59,7 +57,6 @@ exports.handler = async function(event,context,callback){
 
 		    const code = data2.country_code;
 		    apiData.countryCode = code;
-		    console.log("1","TESTING ............");
 
 		    request = await axios(`https://www.travel-advisory.info/api?countrycode=${code}`);
 		    let data3 = request.data
