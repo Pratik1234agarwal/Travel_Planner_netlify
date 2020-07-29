@@ -56,12 +56,7 @@ exports.handler = async function(event,context,callback){
 
 		    const code = data2.country_code;
 		    apiData.countryCode = code;
-
-		    request = await axios(`https://www.travel-advisory.info/api?countrycode=${code}`);
-		    let data3 = request.data
-		    apiData.risk = data3.data[code];
-		    apiData.riskScore = data3.data[code].advisory.score;
-
+        
 		    request = await axios(`https://pixabay.com/api/?key=${KEY_PIXABAY}&q=${city}&category=travel`);
 		    let data4 = request.data
 		    if(data4.hits.length === 0){
@@ -70,9 +65,6 @@ exports.handler = async function(event,context,callback){
 		    }
 		    apiData.images = filterImages(data4.hits);
 
-		    request = await axios(`https://restcountries.eu/rest/v2/alpha/${code}`);
-		    let data5 = request.data
-		    apiData.countryDetails = setCountryDetails(data5);
 		    send(apiData);
 		}catch(error){
 		  console.log("Error",error);
@@ -81,21 +73,7 @@ exports.handler = async function(event,context,callback){
 	}
 }
 
-// helper functions 
-
-
-
-function setCountryDetails(data5){
-    countryDetails = {};
-    countryDetails.currency = data5.currencies[0];
-    countryDetails.population = data5.population;
-    countryDetails.capital = data5.capital;
-    countryDetails.callingCode = data5.callingCodes[0];
-    countryDetails.languages = data5.languages[0];
-    countryDetails.flag = data5.flag;
-
-    return countryDetails;
-}
+// helper functions
 
 
 /* This filters the pixibay api result */
