@@ -1,0 +1,18 @@
+{
+  "name": "travel_functions",
+  "version": "1.0.0",
+  "description": "This is a function which serves as the backend for https://travillie.web.app/ ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "netlify-lambda build functions",
+    "dev": "netlify-lambda serve functions",
+    "lambda-serve": "netlify-lambda serve functions"
+  },
+  "author": "Pratik Agarwal",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "netlify-lambda": "^2.0.1"
+  }
+}
